@@ -5,7 +5,8 @@ from src.main.Orchestrateur import Orchestrateur
 from src.etapes.Etape01_Test import Etape01_Test
 from src.etapes.Etape02_Gouvernance import Etape02_Gouvernance
 from src.etapes.Etape03_Preprocessing import Etape03_Preprocessing
-
+from src.etapes.Etape04_PD_TTC import Etape04_PD_TTC
+from src.etapes.Etape05_ValidationPD import Etape05_ValidationPD
 
 
 # Load
@@ -42,6 +43,8 @@ def main():
         Etape01_Test(),
         Etape02_Gouvernance(),
         Etape03_Preprocessing(),
+        Etape04_PD_TTC(),
+        Etape05_ValidationPD(),
     ])
 
     Pipeline.Executer(Contexte)
