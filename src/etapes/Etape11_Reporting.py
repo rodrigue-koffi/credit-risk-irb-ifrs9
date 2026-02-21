@@ -2,6 +2,11 @@ class Etape11_Reporting:
     def Executer(self, Contexte):
         t = Contexte["t"]
 
+        if "MonteCarlo" in Contexte:
+            mc = Contexte["MonteCarlo"]
+            print(f"VaR 99% (Monte Carlo) : {mc['VaR_99']:.2f}")
+            print(f"Expected Shortfall : {mc['Expected_Shortfall']:.2f}")
+
         print("\n===== RAPPORT FINAL =====")
 
         if "PD_TTC" in t.columns:

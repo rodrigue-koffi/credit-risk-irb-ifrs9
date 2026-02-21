@@ -13,6 +13,7 @@ from src.etapes.Etape08_EL import Etape08_EL
 from src.etapes.Etape09_IFRS9_ECL import Etape09_IFRS9_ECL
 from src.etapes.Etape10_CapitalIRB import Etape10_CapitalIRB
 from src.etapes.Etape11_Reporting import Etape11_Reporting
+from src.etapes.Etape13_ReverseStress import Etape13_ReverseStress
 # Load
 
 def OpenFile(Path: str) -> pd.DataFrame:
@@ -55,6 +56,8 @@ def main():
         Etape09_IFRS9_ECL(),
         Etape10_CapitalIRB(),
         Etape11_Reporting(),
+        Etape12_MonteCarlo(),
+        Etape13_ReverseStress(),
     ])
 
     Pipeline.Executer(Contexte)
