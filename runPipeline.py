@@ -11,6 +11,7 @@ from src.etapes.Etape06_LGD import Etape06_LGD
 from src.etapes.Etape07_EAD import Etape07_EAD
 from src.etapes.Etape08_EL import Etape08_EL
 from src.etapes.Etape09_IFRS9_ECL import Etape09_IFRS9_ECL
+from src.etapes.Etape10_CapitalIRB import Etape10_CapitalIRB
 # Load
 
 def OpenFile(Path: str) -> pd.DataFrame:
@@ -51,6 +52,7 @@ def main():
         Etape07_EAD(),
         Etape08_EL(),
         Etape09_IFRS9_ECL(),
+        Etape10_CapitalIRB(),
     ])
 
     Pipeline.Executer(Contexte)
