@@ -10,6 +10,7 @@ from src.etapes.Etape05_ValidationPD import Etape05_ValidationPD
 from src.etapes.Etape06_LGD import Etape06_LGD
 from src.etapes.Etape07_EAD import Etape07_EAD
 from src.etapes.Etape08_EL import Etape08_EL
+from src.etapes.Etape09_IFRS9_ECL import Etape09_IFRS9_ECL
 # Load
 
 def OpenFile(Path: str) -> pd.DataFrame:
@@ -49,6 +50,7 @@ def main():
         Etape06_LGD(),
         Etape07_EAD(),
         Etape08_EL(),
+        Etape09_IFRS9_ECL(),
     ])
 
     Pipeline.Executer(Contexte)
