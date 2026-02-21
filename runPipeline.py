@@ -4,6 +4,7 @@ import pandas as pd
 from src.main.Orchestrateur import Orchestrateur
 from src.etapes.Etape01_Test import Etape01_Test
 from src.etapes.Etape02_Gouvernance import Etape02_Gouvernance
+from src.etapes.Etape03_Preprocessing import Etape03_Preprocessing
 
 
 
@@ -40,6 +41,7 @@ def main():
     Pipeline = Orchestrateur([
         Etape01_Test(),
         Etape02_Gouvernance(),
+        Etape03_Preprocessing(),
     ])
 
     Pipeline.Executer(Contexte)
