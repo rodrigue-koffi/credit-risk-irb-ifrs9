@@ -7,7 +7,7 @@ from src.etapes.Etape02_Gouvernance import Etape02_Gouvernance
 from src.etapes.Etape03_Preprocessing import Etape03_Preprocessing
 from src.etapes.Etape04_PD_TTC import Etape04_PD_TTC
 from src.etapes.Etape05_ValidationPD import Etape05_ValidationPD
-
+from src.etapes.Etape06_LGD import Etape06_LGD
 
 # Load
 
@@ -45,6 +45,7 @@ def main():
         Etape03_Preprocessing(),
         Etape04_PD_TTC(),
         Etape05_ValidationPD(),
+        Etape06_LGD(),
     ])
 
     Pipeline.Executer(Contexte)
