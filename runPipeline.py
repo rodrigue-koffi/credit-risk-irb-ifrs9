@@ -1,8 +1,12 @@
 import os
 import pandas as pd
 
-# Loader data
+from src.main.Orchestrateur import Orchestrateur
+from src.etapes.Etape01_Test import Etape01_Test
 
+
+
+# Load
 
 def OpenFile(Path: str) -> pd.DataFrame:
     Extension = os.path.splitext(Path)[1].lower()
@@ -17,15 +21,26 @@ def OpenFile(Path: str) -> pd.DataFrame:
         raise ValueError(f"Erreur: {Extension}")
 
 
-# E_P Pipeline
+# Main pipeline
+
 def main():
-    Chemin = "data/german_credit_data.xlsx"  # à adapter
+    Chemin = "data/german_credit_data.xlsx"
+
+    Contexte = {}
 
     if os.path.exists(Chemin):
         t = OpenFile(Chemin)
+        Contexte["t"] = t
         print("Dataset chargé:", t.shape)
     else:
-        print("Pas de données dans /data")
+        print("Pas de dataset")
+
+    # Enchainement PipeLine
+    Pipeline = Orchestrateur([
+        Etape01_Test(),
+    ])
+
+    Pipeline.Executer(Contexte)
 
 
 if __name__ == "__main__":
