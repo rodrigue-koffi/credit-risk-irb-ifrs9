@@ -150,8 +150,8 @@ This project is for educational and demonstration purposes only and does not rep
 
 ## Author
 
-Rodrigue KOFFI
-Quantitative Risk Analyst
-Credit Risk (IFRS 9) & Market Risk
+Rodrigue KOFFI␠␠
+Quantitative Risk Analyst␠␠
+Credit Risk (IFRS 9) & Market Risk␠␠
 FRM Level I Candidate␠␠  
 LinkedIn: https://www.linkedin.com/in/rodrigue-k-011aa01b8
