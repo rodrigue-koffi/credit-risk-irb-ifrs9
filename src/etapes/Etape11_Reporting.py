@@ -21,6 +21,13 @@ class Etape11_Reporting:
         if "Capital_IRB" in t.columns:
             print(f"Capital IRB moyen : {t['Capital_IRB'].mean():.2f}")
 
+        if "Stage_IFRS9" in t.columns:
+            print("Répartition IFRS9 stages:")
+            print(t["Stage_IFRS9"].value_counts().sort_index())
+
+        if "RWA" in t.columns:
+            print(f"RWA moyen : {t['RWA'].mean():.2f}")
+
         if "Metrics_PD" in Contexte:
             gini = Contexte["Metrics_PD"]["Gini"]
             print(f"Gini modèle PD : {gini:.3f}")

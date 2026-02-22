@@ -13,7 +13,10 @@ from src.etapes.Etape08_EL import Etape08_EL
 from src.etapes.Etape09_IFRS9_ECL import Etape09_IFRS9_ECL
 from src.etapes.Etape10_CapitalIRB import Etape10_CapitalIRB
 from src.etapes.Etape11_Reporting import Etape11_Reporting
+from src.etapes.Etape12_MonteCarlo import Etape12_MonteCarlo
 from src.etapes.Etape13_ReverseStress import Etape13_ReverseStress
+from src.etapes.Etape14_StagingIFRS9 import Etape14_StagingIFRS9
+from src.etapes.Etape15_RWA import Etape15_RWA
 # Load
 
 def OpenFile(Path: str) -> pd.DataFrame:
@@ -43,21 +46,32 @@ def main():
     else:
         print("Pas de dataset")
 
-    # Enchainement PipeLine
-    Pipeline = Orchestrateur([
-        Etape01_Test(),
-        Etape02_Gouvernance(),
-        Etape03_Preprocessing(),
-        Etape04_PD_TTC(),
-        Etape05_ValidationPD(),
-        Etape06_LGD(),
-        Etape07_EAD(),
-        Etape08_EL(),
-        Etape09_IFRS9_ECL(),
-        Etape10_CapitalIRB(),
-        Etape11_Reporting(),
-        Etape13_ReverseStress(),
-    ])
+    # Enchainement Pipeline
+Pipeline = Orchestrateur([
+    Etape01_Test(),
+    Etape02_Gouvernance(),
+    Etape03_Preprocessing(),
+    Etape04_PD_TTC(),
+    Etape05_ValidationPD(),
+    Etape06_LGD(),
+    Etape07_EAD(),
+    Etape08_EL(),
+    Etape09_IFRS9_ECL(),
+    Etape10_CapitalIRB(),
+
+    # IFRS9 / Bâle
+    Etape14_StagingIFRS9(),
+    Etape15_RWA(),
+
+    # Qt
+    Etape12_MonteCarlo(),
+
+    # Synthese
+    Etape11_Reporting(),
+
+    # Conclusion
+    Etape13_ReverseStress(),
+])
 
     Pipeline.Executer(Contexte)
 
