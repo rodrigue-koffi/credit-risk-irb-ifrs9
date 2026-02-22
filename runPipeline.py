@@ -17,23 +17,25 @@ from src.etapes.Etape12_MonteCarlo import Etape12_MonteCarlo
 from src.etapes.Etape13_ReverseStress import Etape13_ReverseStress
 from src.etapes.Etape14_StagingIFRS9 import Etape14_StagingIFRS9
 from src.etapes.Etape15_RWA import Etape15_RWA
-# Load
 
+
+# ===============================
+# File loader
+# ===============================
 def OpenFile(Path: str) -> pd.DataFrame:
     Extension = os.path.splitext(Path)[1].lower()
 
     if Extension in (".xlsx", ".xls"):
         return pd.read_excel(Path)
-
     elif Extension in (".csv", ".txt"):
         return pd.read_csv(Path, sep=None, engine="python")
-
     else:
         raise ValueError(f"Erreur: {Extension}")
 
 
+# ===============================
 # Main pipeline
-
+# ===============================
 def main():
     Chemin = "data/german_credit_data.xlsx"
 
@@ -45,36 +47,39 @@ def main():
         print("Dataset chargé:", t.shape)
     else:
         print("Pas de dataset")
+        return
 
     # Enchainement Pipeline
-Pipeline = Orchestrateur([
-    Etape01_Test(),
-    Etape02_Gouvernance(),
-    Etape03_Preprocessing(),
-    Etape04_PD_TTC(),
-    Etape05_ValidationPD(),
-    Etape06_LGD(),
-    Etape07_EAD(),
-    Etape08_EL(),
-    Etape09_IFRS9_ECL(),
-    Etape10_CapitalIRB(),
+    Pipeline = Orchestrateur([
+        Etape01_Test(),
+        Etape02_Gouvernance(),
+        Etape03_Preprocessing(),
+        Etape04_PD_TTC(),
+        Etape05_ValidationPD(),
+        Etape06_LGD(),
+        Etape07_EAD(),
+        Etape08_EL(),
+        Etape09_IFRS9_ECL(),
+        Etape10_CapitalIRB(),
 
-    # IFRS9 / Bâle
-    Etape14_StagingIFRS9(),
-    Etape15_RWA(),
+        # IFRS9 / Bâle
+        Etape14_StagingIFRS9(),
+        Etape15_RWA(),
 
-    # Qt
-    Etape12_MonteCarlo(),
+        # Quant
+        Etape12_MonteCarlo(),
 
-    # Synthese
-    Etape11_Reporting(),
+        # Synthèse
+        Etape11_Reporting(),
 
-    # Conclusion
-    Etape13_ReverseStress(),
-])
+        # Conclusion
+        Etape13_ReverseStress(),
+    ])
 
+    # Exécution
     Pipeline.Executer(Contexte)
 
 
+# Entry point
 if __name__ == "__main__":
     main()
