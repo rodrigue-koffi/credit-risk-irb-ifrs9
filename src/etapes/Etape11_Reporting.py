@@ -4,8 +4,10 @@ class Etape11_Reporting:
 
         if "MonteCarlo" in Contexte:
             mc = Contexte["MonteCarlo"]
-            print(f"VaR 99% (Monte Carlo) : {mc['VaR_99']:.2f}")
-            print(f"Expected Shortfall : {mc['Expected_Shortfall']:.2f}")
+            print(f"VaR 99%: {mc['VaR_99']:.2f}")
+
+            if "Expected_Shortfall" in mc:
+                print(f"Expected Shortfall: {mc['Expected_Shortfall']:.2f}")
 
         print("\n===== RAPPORT FINAL =====")
 
