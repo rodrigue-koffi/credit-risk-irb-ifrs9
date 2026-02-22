@@ -19,9 +19,7 @@ from src.etapes.Etape14_StagingIFRS9 import Etape14_StagingIFRS9
 from src.etapes.Etape15_RWA import Etape15_RWA
 
 
-# ===============================
-# File loader
-# ===============================
+#Load
 def OpenFile(Path: str) -> pd.DataFrame:
     Extension = os.path.splitext(Path)[1].lower()
 
@@ -33,9 +31,7 @@ def OpenFile(Path: str) -> pd.DataFrame:
         raise ValueError(f"Erreur: {Extension}")
 
 
-# ===============================
-# Main pipeline
-# ===============================
+
 def main():
     Chemin = "data/german_credit_data.xlsx"
 
@@ -66,17 +62,17 @@ def main():
         Etape14_StagingIFRS9(),
         Etape15_RWA(),
 
-        # Quant
+        # Simu
         Etape12_MonteCarlo(),
 
-        # Synthèse
+        # Synthe
         Etape11_Reporting(),
 
         # Conclusion
         Etape13_ReverseStress(),
     ])
 
-    # Exécution
+    # Exec.
     Pipeline.Executer(Contexte)
 
 

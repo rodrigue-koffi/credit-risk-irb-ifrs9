@@ -2,7 +2,7 @@ class Etape14_StagingIFRS9:
     def Executer(self, Contexte):
         t = Contexte["t"].copy()
 
-        print("\n===== IFRS9 STAGING =====")
+        print("\n IFRS9 STAGING ")
 
         if "Defaut" in t.columns:
 
@@ -11,17 +11,17 @@ class Etape14_StagingIFRS9:
 
             t["Stage_IFRS9"] = 1
 
-            # Stage 2 : dégradation du risque
+            # Stage 2 : degradation du risque
             t.loc[pd_ref > 0.10, "Stage_IFRS9"] = 2
 
-            # Stage 3 : défaut observé
+            # Stage 3 : default observé
             t.loc[t["Defaut"] == 1, "Stage_IFRS9"] = 3
 
-            print("Staging IFRS9 calculé")
+            print("Staging IFRS9")
             print(t["Stage_IFRS9"].value_counts().sort_index())
 
         else:
-            print("Staging impossible - Defaut manquant")
+            print("Staging KO")
 
         Contexte["t"] = t
         return Contexte

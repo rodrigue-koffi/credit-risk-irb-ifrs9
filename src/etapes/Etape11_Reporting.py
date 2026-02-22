@@ -9,7 +9,7 @@ class Etape11_Reporting:
             if "Expected_Shortfall" in mc:
                 print(f"Expected Shortfall: {mc['Expected_Shortfall']:.2f}")
 
-        print("\n===== RAPPORT FINAL =====")
+        print("\n RAPPORT FINAL")
 
         if "PD_TTC" in t.columns:
             print(f"PD moyenne : {t['PD_TTC'].mean():.4f}")
@@ -34,6 +34,6 @@ class Etape11_Reporting:
             gini = Contexte["Metrics_PD"]["Gini"]
             print(f"Gini modèle PD : {gini:.3f}")
 
-        print("=========================\n")
+        print("\n")
 
         return Contexte

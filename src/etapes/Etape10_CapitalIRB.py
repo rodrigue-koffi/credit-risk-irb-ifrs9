@@ -10,7 +10,7 @@ class Etape10_CapitalIRB:
             PD = t["PD_TTC"].clip(1e-6, 1 - 1e-6)
             LGD = t["LGD"]
 
-            # Corrélation simplifiée Bâle
+            # Correlation simple Bale
             R = 0.12 * (1 - np.exp(-50 * PD)) / (1 - np.exp(-50)) + \
                 0.24 * (1 - (1 - np.exp(-50 * PD)) / (1 - np.exp(-50)))
 

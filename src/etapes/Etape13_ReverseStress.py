@@ -4,7 +4,7 @@ class Etape13_ReverseStress:
     def Executer(self, Contexte):
         t = Contexte["t"]
 
-        print("\n===== REVERSE STRESS TEST =====")
+        print("\n REVERSE STRESS TEST")
 
         if {"LGD", "EAD", "Capital_IRB"}.issubset(t.columns):
 
@@ -24,10 +24,10 @@ class Etape13_ReverseStress:
             if rupture:
                 print(f"Point de rupture estimé : PD moyenne ≈ {rupture:.2f}")
             else:
-                print("Aucun point de rupture trouvé dans le range testé")
+                print("Aucun point de rupture")
 
         else:
-            print("Reverse stress impossible - données manquantes")
+            print("Reverse stress KO")
 
-        print("================================\n")
+        print("\n")
         return Contexte

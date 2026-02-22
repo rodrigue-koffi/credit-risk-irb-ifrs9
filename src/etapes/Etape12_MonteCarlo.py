@@ -27,9 +27,9 @@ class Etape12_MonteCarlo:
                 "VaR_99": np.percentile(pertes, 99),
             }
 
-            print("Monte Carlo terminé")
+            print("Monte Carlo OK")
 
         else:
-            print("Monte Carlo impossible - données manquantes")
+            print("Absentes de data")
 
         return Contexte
