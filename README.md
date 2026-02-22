@@ -1,7 +1,8 @@
-# credit-risk-irb-ifrs9
-End-to-end credit risk modelling pipeline implemented in Python, covering regulatory, accounting, and risk management perspectives.
+# Credit Risk IRB–IFRS9 End-to-End Pipeline
 
-This project demonstrates the full credit risk chain from data preparation to capital assessment, including IRB, IFRS9, Monte Carlo simulation, and reverse stress testing.
+End-to-end credit risk modelling pipeline implemented in Python, covering regulatory (Basel), accounting (IFRS9), and internal risk (ICAAP) perspectives.
+
+This project demonstrates a full credit risk chain from raw data to capital assessment and resilience analysis.
 
 ---
 
@@ -10,38 +11,58 @@ This project demonstrates the full credit risk chain from data preparation to ca
 This repository implements a complete credit risk framework including:
 
 - Probability of Default (PD) modelling
-- Loss Given Default (LGD) estimation
-- Exposure at Default (EAD)
-- Expected Loss (EL)
-- IFRS9 Expected Credit Loss (ECL)
+- Loss Given Default (LGD) downturn estimation
+- Exposure at Default (EAD) modelling
+- Margin of Conservatism (MoC) concept
 - Basel IRB Capital calculation
+- Risk-Weighted Assets (RWA)
+- IFRS9 Expected Credit Loss (ECL)
 - Monte Carlo economic capital simulation
-- Reverse stress testing
+- Stress testing and reverse stress testing
 
-The goal is to showcase an end-to-end, production-style credit risk pipeline.
+The objective is to showcase a production-style, end-to-end credit risk modelling pipeline.
 
 ---
 
 ## Pipeline Architecture
 
-1. Data loading and governance  
-2. Preprocessing and feature preparation  
-3. PD modelling (logistic regression)  
-4. Model validation (AUC, Gini, KS)  
-5. LGD estimation (Basel proxy)  
-6. EAD estimation  
-7. Expected Loss calculation  
-8. IFRS9 Expected Credit Loss  
-9. Basel IRB Capital calculation  
-10. Monte Carlo loss simulation  
-11. Portfolio reporting  
-13. Reverse stress testing  
+### 1️ Data Foundations
+- Data loading and governance checks
+- Data preprocessing and feature preparation
+
+### 2️ Default Risk Modelling
+- TTC PD modelling (logistic regression)
+- Model validation (AUC, Gini, KS)
+- Point-in-Time calibration (IFRS9 proxy)
+
+### 3️ Loss Parameters
+- LGD downturn estimation
+- Dynamic EAD modelling (credit amount proxy)
+- Margin of Conservatism concept integration
+
+### 4️ Basel Regulatory Layer
+- Basel IRB capital calculation  
+  (default correlation, 99.9% quantile)
+- Risk-Weighted Assets (RWA) derivation
+
+### 5️ IFRS9 Accounting Layer
+- IFRS9 staging (Stage 1 / 2 / 3 classification)
+- Expected Credit Loss (PD PIT × LGD × EAD)
+
+### 6️ Internal Risk & ICAAP
+- Stress testing concepts
+- Monte Carlo loss simulation
+- Tail risk metrics (VaR)
+
+### 7️ Portfolio Resilience
+- Risk reporting dashboard
+- Reverse stress testing (portfolio breakpoints)
 
 ---
 
-## Model Performance
+## Model Performance (Baseline)
 
-The baseline PD model achieves:
+Baseline PD model performance:
 
 - AUC: ~0.64  
 - Gini: ~0.28  
@@ -51,22 +72,25 @@ The baseline model achieves a Gini of ~0.28, leaving room for improvement throug
 
 ---
 
-## Portfolio Results (Example Output)
+## Example Portfolio Outputs
+
+Typical outputs produced by the pipeline:
 
 - Average PD: ~30%  
 - Expected Loss: ~531  
 - IFRS9 ECL: ~638  
 - Average IRB Capital: ~580  
+- RWA derived from Basel capital
 
-Monte Carlo simulation provides an empirical loss distribution and tail risk metrics.
+Monte Carlo simulation provides empirical loss distributions and tail risk indicators.
 
 ---
 
 ## Reverse Stress Testing
 
-The reverse stress module identifies portfolio breakpoints.
+The reverse stress module identifies portfolio breakpoints by estimating the level of deterioration required to breach capital buffers.
 
-Example result:
+Example output:
 
 > Portfolio break point estimated at an average PD of ~60%
 
@@ -77,10 +101,11 @@ This provides a simplified ICAAP-style resilience analysis.
 ## Methodology
 
 - Logistic regression PD model  
-- Basel-inspired LGD proxy  
+- Basel-inspired downturn LGD proxy  
 - Credit amount proxy for EAD  
-- TTC to PIT approximation for IFRS9  
-- Gaussian copula-inspired IRB capital formula  
+- TTC → PIT approximation for IFRS9  
+- Basel IRB capital formula implementation  
+- RWA derivation from regulatory capital  
 - Monte Carlo loss simulation  
 - Scenario-based reverse stress testing  
 
@@ -89,31 +114,31 @@ This provides a simplified ICAAP-style resilience analysis.
 ## Tech Stack
 
 - Python  
-- NumPy / Pandas  
+- Pandas / NumPy  
 - Scikit-learn  
 - SciPy  
 
 ---
 
-## Purpose
+## Project Objectives
 
-This project is designed to:
+This project aims to:
 
-- Demonstrate credit risk modelling skills  
-- Illustrate regulatory concepts (Basel & IFRS9)  
+- Demonstrate practical credit risk modelling skills  
+- Bridge Basel and IFRS9 frameworks  
+- Showcase end-to-end quantitative risk engineering  
 - Provide a structured, production-style pipeline  
-- Showcase quantitative risk engineering capabilities  
 
 ---
 
 ## Possible Improvements
 
-- Feature engineering for higher Gini  
-- PIT macroeconomic modelling  
-- Lifetime ECL staging (IFRS9 stages 1–3)  
-- Downturn LGD modelling  
+- Feature engineering for higher PD performance  
+- Full PIT macroeconomic modelling  
+- IFRS9 lifetime ECL staging logic  
+- Advanced downturn LGD modelling  
 - Economic capital optimization  
-- Visualization dashboards  
+- Interactive dashboards
 
 ---
 
@@ -125,8 +150,8 @@ This project is for educational and demonstration purposes only and does not rep
 
 ## Author
 
-Rodrigue KOFFI␠␠  
-Quantitative Risk Analyst␠␠  
-Credit Risk (IFRS 9) & Market Risk␠␠  
+Rodrigue KOFFI
+Quantitative Risk Analyst
+Credit Risk (IFRS 9) & Market Risk
 FRM Level I Candidate␠␠  
 LinkedIn: https://www.linkedin.com/in/rodrigue-k-011aa01b8
