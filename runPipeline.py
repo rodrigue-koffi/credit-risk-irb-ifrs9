@@ -56,7 +56,6 @@ def main():
         Etape09_IFRS9_ECL(),
         Etape10_CapitalIRB(),
         Etape11_Reporting(),
-        Etape12_MonteCarlo(),
         Etape13_ReverseStress(),
     ])
 
